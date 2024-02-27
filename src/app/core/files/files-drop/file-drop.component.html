@@ -1,0 +1,9 @@
+<div cdkDropList class="dropzone" (dragover)="onDragOver($event)" (dragend)="onDragEnd($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+    @if (isDragOver$ | async) {
+        <p>Test</p>
+    }
+    @else {
+        <p>Перетащите файлы сюда</p>
+    }
+    
+</div>
