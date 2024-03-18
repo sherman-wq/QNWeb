@@ -1,0 +1,13 @@
+<div class="container">
+    <qn-files-drop-area
+        (onFilesAdded)="handleAddedFiles($event)">
+    </qn-files-drop-area>
+    <button mat-button color="primary" (click)="onActionButtonClick()">Start Action</button>
+    <qn-files-list
+        [loading]="this.onLoading$ | async"
+        [items]="documents">
+    </qn-files-list>
+
+    
+</div>
+

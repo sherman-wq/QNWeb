@@ -1,15 +1,1 @@
-<div *ngIf="isAuthenticated; else errorContent" class="container">
-    <nav class="navbar">
-        <a routerLink="/home">Home</a>
-        <a routerLink="/pricing" >Features</a>
-        <a routerLink="/pricing">Pricing</a>
-        <a href="/about">About</a>
-    </nav>
-
-    <router-outlet></router-outlet>
-</div>
-
-
-<ng-template #errorContent>
-    <p>Error: {{errorMessage}}</p>
-</ng-template>
+<router-outlet></router-outlet>

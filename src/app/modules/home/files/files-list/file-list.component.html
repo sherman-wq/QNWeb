@@ -1,0 +1,63 @@
+@if (loading) {
+    <div class="container">
+        <mat-spinner></mat-spinner>
+    </div>
+} 
+@else {
+    
+<mat-action-list>
+    @for (document of items; track document) {
+
+        <ng-container [ngSwitch]="document.state">
+            
+            <mat-list-item *ngSwitchCase="'Default'">
+                <mat-icon matListItemIcon>description</mat-icon>
+                <h3 matListItemTitle>{{document.name}}</h3>
+                <p matListItemLine>
+                    <span>Size:</span>
+                    <span class="demo-2">{{document.size | fileSize}}</span>
+                </p>
+            </mat-list-item>
+
+            <mat-list-item *ngSwitchCase="'Success'">
+                <mat-icon matListItemIcon>description</mat-icon>
+                <h3 matListItemTitle>{{document.name}}</h3>
+                <p matListItemLine>
+                    <span>Size:</span>
+                    <span class="demo-2">{{document.size | fileSize}}</span>
+                </p>
+            </mat-list-item>
+
+            <mat-list-item *ngSwitchCase="'Buffering'">
+                <mat-progress-bar mode="buffer"></mat-progress-bar>
+                <mat-icon matListItemIcon>description</mat-icon>
+                <h3 matListItemTitle>{{document.name}}</h3>
+                <p matListItemLine>
+                    <span>Size:</span>
+                    <span class="demo-2">{{document.size | fileSize}}</span>
+                </p>
+            </mat-list-item>
+
+            <mat-list-item *ngSwitchCase="'Transfering'">
+                <mat-progress-bar mode="determinate" [value]="document.progress"></mat-progress-bar>
+                <mat-icon matListItemIcon>description</mat-icon>
+                <h3 matListItemTitle>{{document.name}}</h3>
+                <p matListItemLine>
+                    <span>Size: </span>
+                    <span class="demo-2">{{document.size | fileSize}}</span>
+                </p>
+            </mat-list-item>
+
+        </ng-container>
+    }
+    @empty {
+        <p>List of documents:</p>
+    }
+</mat-action-list>
+}
+
+<!--
+
+    <button mat-list-item (click)="deleteItem">Save</button>
+    <button mat-list-item (click)="deleteItem">Undo</button>
+-->
